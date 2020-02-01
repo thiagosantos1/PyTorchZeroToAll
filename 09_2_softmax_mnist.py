@@ -35,13 +35,14 @@ class Net(nn.Module):
 
     def __init__(self):
         super(Net, self).__init__()
-        self.l1 = nn.Linear(784, 520)
+        self.l1 = nn.Linear(784, 520) # 784 is the image dimension. the "best" 520 pixes will be selected 
         self.l2 = nn.Linear(520, 320)
         self.l3 = nn.Linear(320, 240)
         self.l4 = nn.Linear(240, 120)
-        self.l5 = nn.Linear(120, 10)
+        self.l5 = nn.Linear(120, 10) # 10 ouput as a probability 
 
     def forward(self, x):
+        # First, we need to flat our matrix into a 1 dimension. This is the first layer inputs
         x = x.view(-1, 784)  # Flatten the data (n, 1, 28, 28)-> (n, 784)
         x = F.relu(self.l1(x))
         x = F.relu(self.l2(x))

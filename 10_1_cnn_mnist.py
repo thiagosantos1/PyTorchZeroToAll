@@ -35,17 +35,20 @@ class Net(nn.Module):
 
     def __init__(self):
         super(Net, self).__init__()
-        self.conv1 = nn.Conv2d(1, 10, kernel_size=5)
+        # The numbers here are channels. Starting with 1. Ouput of 1 has to match the input of the other
+        self.conv1 = nn.Conv2d(1, 10, kernel_size=5) # Kernel is our filter size
         self.conv2 = nn.Conv2d(10, 20, kernel_size=5)
         self.mp = nn.MaxPool2d(2)
-        self.fc = nn.Linear(320, 10)
+        # How to choose this 320 number?
+        # It depends of the filter. If you don't wanna to calculate, just run once and pytorch will give you the number as a complain
+        self.fc = nn.Linear(320, 10) # This is our fully connected layer from our arquiteture
 
     def forward(self, x):
         in_size = x.size(0)
         x = F.relu(self.mp(self.conv1(x)))
         x = F.relu(self.mp(self.conv2(x)))
         x = x.view(in_size, -1)  # flatten the tensor
-        x = self.fc(x)
+        x = self.fc(x) # then we feed it to our fully connected layer
         return F.log_softmax(x)
 
 

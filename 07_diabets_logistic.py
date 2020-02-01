@@ -18,6 +18,7 @@ class Model(nn.Module):
         # Thus, you must choose those numbers. 
         # However, The first one always has to be the same as your input dimension 
         # and the last must be same as your desired output dimension
+        # 3 NN layers
         self.l1 = nn.Linear(8, 6)
         self.l2 = nn.Linear(6, 4)
         self.l3 = nn.Linear(4, 1)

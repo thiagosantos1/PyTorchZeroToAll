@@ -10,6 +10,7 @@ class DiabetesDataset(Dataset):
 
     # Initialize your data, download, etc.
     def __init__(self):
+        # Step 1, download the data
         xy = np.loadtxt('./data/diabetes.csv.gz',
                         delimiter=',', dtype=np.float32)
         self.len = xy.shape[0]
@@ -17,13 +18,16 @@ class DiabetesDataset(Dataset):
         self.y_data = from_numpy(xy[:, [-1]])
 
     def __getitem__(self, index):
+        # step 2, return one item 
         return self.x_data[index], self.y_data[index]
 
     def __len__(self):
+        # step 3, return data length
         return self.len
 
 
-dataset = DiabetesDataset()
+dataset = DiabetesDataset() # create an load data
+# Use loader to load the data and do anything you want to
 train_loader = DataLoader(dataset=dataset,
                           batch_size=32,
                           shuffle=True,

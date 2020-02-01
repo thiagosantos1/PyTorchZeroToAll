@@ -3,7 +3,7 @@ import numpy as np
 
 # Cross entropy example
 # One hot
-# 0: 1 0 0
+# 0: 1 0 0 
 # 1: 0 1 0
 # 2: 0 0 1
 Y = np.array([1, 0, 0])
