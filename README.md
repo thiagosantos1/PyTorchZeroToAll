@@ -1,16 +1,27 @@
-[![Build Status](https://travis-ci.org/hunkim/PythonZeroToAll.svg?branch=master)](https://travis-ci.org/hunkim/PythonZeroToAll)
+# Pytorch Notes
 
-# PyTorchZeroToAll
-Quick 3~4 day lecture materials for HKUST students.
+Every operation is saved as a graph.
 
-## Video Lectures: (RNN TBA)
-* [Youtube](http://bit.ly/PyTorchVideo)
-* [Bilibili](https://www.bilibili.com/video/av15823922/)
+Thus, we can have the use of special methods, for instance:
 
-## Slides
-* [Lecture Slides @GoogleDrive](http://bit.ly/PyTorchZeroAll)
+l = loss(x,y)
+l.backward() # comes back and calculate gradiente descente for all weights
 
-If you cannot access the GoogleDoc for somehow, please check out pdf files in slides. However, slides in GoogleDrive are always latest. We really appreciate your comments.
+w.data = w.data - 0.01 * w.grad.data - Store the gradiente at w.grad
+ 0.01 is the learning rate
 
-## Previous Lectures 
-* cf., http://bit.ly/TF_HKUST (3 day crash course using TensorFlow)
+
+
+***** IMPORTANT ******
+Gotta zero the gradiente, to 
+
+
+
+* Chain Rule --> "easer" with pytorch, since it's a graph 
+We can compute the gradient at each node
+
+
+
+
+
+
