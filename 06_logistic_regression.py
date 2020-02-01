@@ -22,7 +22,7 @@ class Model(nn.Module):
         In the forward function we accept a Variable of input data and we must return
         a Variable of output data.
         """
-        y_pred = sigmoid(self.linear(x))
+        y_pred = sigmoid(self.linear(x))  # Squash numbers from 0 to 1. Probabilistic model
         return y_pred
 
 
@@ -32,7 +32,7 @@ model = Model()
 # Construct our loss function and an Optimizer. The call to model.parameters()
 # in the SGD constructor will contain the learnable parameters of the two
 # nn.Linear modules which are members of the model.
-criterion = nn.BCELoss(reduction='mean')
+criterion = nn.BCELoss(reduction='mean') # Binary Cross entropy loss. It penalizes y_ far from true
 optimizer = optim.SGD(model.parameters(), lr=0.01)
 
 # Training loop

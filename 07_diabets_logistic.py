@@ -13,11 +13,16 @@ class Model(nn.Module):
         In the constructor we instantiate two nn.Linear module
         """
         super(Model, self).__init__()
+        # Why these numbers ? 
+        # these numbers are arbitrary. Same as a Hidden layers. This is your Neural Network
+        # Thus, you must choose those numbers. 
+        # However, The first one always has to be the same as your input dimension 
+        # and the last must be same as your desired output dimension
         self.l1 = nn.Linear(8, 6)
         self.l2 = nn.Linear(6, 4)
         self.l3 = nn.Linear(4, 1)
 
-        self.sigmoid = nn.Sigmoid()
+        self.sigmoid = nn.Sigmoid() # we can use to add between layers. The ouput will be normalized then
 
     def forward(self, x):
         """
