@@ -1,4 +1,4 @@
-# Pytorch Notes
+# Pytorch Notes  --> https://www.youtube.com/watch?v=ogZi5oIo4fI&list=PLlMkM4tgfjnJ3I-dbhO9JTw7gNty6o_2m&index=12
 
 Every operation is saved as a graph.
 
