@@ -57,12 +57,15 @@ The idea is that each linear can be multiplied agains the weights
 We can also add layers , as seen below. In that case, we can add squash functions between layers.
 
 self.l1 = nn.Linear(8, 6) # 8 features as input and 6 as ouput
+
 self.l2 = nn.Linear(6, 4)
+
 self.l3 = nn.Linear(4, 1)
 
 self.sigmoid = nn.Sigmoid()
 
 In this case,  Why these numbers ? 
+
 these numbers are arbitrary. Same as a Hidden layers. This is your Neural Network
 Thus, you must choose those numbers. 
 However, The first one always has to be the same as your input dimension 
