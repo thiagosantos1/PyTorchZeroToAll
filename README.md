@@ -110,6 +110,8 @@ Input layer --> Conv2 --> Pooling --> Conv--> pooling --> ........ Fully connect
 
 # RNN 
 
+Each state/node has the information from previous nodes. This is very usefull for NLP
+
 
 
 
