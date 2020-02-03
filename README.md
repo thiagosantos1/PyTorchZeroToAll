@@ -176,3 +176,20 @@ Pytorch already have that for us --> self.embedding = nn.Embedding(input_size, e
 When your data have different lengths for each input string. If you using batch, that become a problem.
 
 The solution is to create padding for each vector, based on the length of the longest one
+
+
+# LSTM 
+ 
+As we know, when predicting a word that deppends on a very long sequence of words, we get the problem of gradiente vashing, a very common problem with deep learning and RNN.
+
+Solution ? LSTM cell
+
+It basically replaces the RNN cell.
+
+It's basically more matrix, and more complicaded. 
+
+You also add gates, which you can think as a layer. LSTM cell them is basically a NN and it's defirentiable
+
+* GOAL
+
+The goal is to learn what to learn and memorize and what to forget
