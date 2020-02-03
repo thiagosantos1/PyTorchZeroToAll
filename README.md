@@ -113,5 +113,66 @@ Input layer --> Conv2 --> Pooling --> Conv--> pooling --> ........ Fully connect
 Each state/node has the information from previous nodes. This is very usefull for NLP
 
 
+* Logic:
+
+At state X, we get the info from previous hidden state X-1(Which also brings info from previous states)
+Then we concatenate the info from the cell itself, do a Matrix multiplication together with a tanh and produce an output.
+This output is the output of the cell which also goes as input for next cell state
+
+In Pytorch we have:
+1) nn.RNN(input_size=x, hidden_size=y, batch_first=True)
+2) nn.GRU(input_size=x, hidden_size=y, batch_first=True)
+3) nn.LSTM(input_size=x, hidden_size=y, batch_first=True)
+
+These numbers means: at each state, we gonna have an input/vector of size x(Let's say x=4 words) and and output of 
+size y(Let's say y=2 words)
+
+Basically this hidden is passed to next cells
 
 
+* Hello Word example:
+
+Let's say we want to give hello as input, how can we do it? 
+
+We can use One hot encoding for example. In this case, for letter h = [1,0,0,0], input size = 4
+
+For the output/hidden state, we can choose. Let's say 2. This means the RNN will produce a vector of size 2, with some values between 0 and 1(probability)
+
+
+* But feeding letter by letter may no be efficiente. We want to use sequence of letters. 
+
+This is called seq_len. 
+
+Let's say seq_len = 5. Thus input_size = (1,5,4) for HELLO as one hot
+
+* We can also provide multiple words at once. Example: hello word
+
+In that case, we have a batch size which correspond for each letter.
+our input size would be = (2,5,4)
+
+* How does it work then:
+
+Simple. When training, as we said, a state X produces an ouput y. that ouput is then feed to state X+1, which then tries to produce the next output.
+
+Example: State 1 has h as input and then produces i as output. State 2 then has i as input and produce h as output. 
+State 3 has h as input, but since it has information from previous states, it produce e as output, instead of i. and so on.
+
+
+In the case of 5 different letters only, we gonna use a vector of size 5 for hotencoding. The output then, is also a one hotencoding of size 5.
+
+* Loss ?
+
+We use Cross Entropy as before. Since we want to see which information/letters are more relevant/give more information for the right output. Since is a multi classification with probability.
+
+
+* Embeddings - Very useful
+
+Instead of using one hotencoding, we shall use embeddings, which is way better. How to insert that in out code?
+
+Pytorch already have that for us --> self.embedding = nn.Embedding(input_size, embedding_size)
+
+# Pad Sequences
+
+When your data have different lengths for each input string. If you using batch, that become a problem.
+
+The solution is to create padding for each vector, based on the length of the longest one

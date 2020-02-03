@@ -38,7 +38,7 @@ class Model(nn.Module):
         self.rnn = nn.RNN(input_size=input_size,
                           hidden_size=hidden_size, batch_first=True)
 
-    def forward(self, hidden, x):
+    def forward(self, hidden, x): # hidden is the output from previous state
         # Reshape input (batch first)
         x = x.view(batch_size, sequence_length, input_size)
 
@@ -46,7 +46,7 @@ class Model(nn.Module):
         # Input: (batch, seq_len, input_size)
         # hidden: (num_layers * num_directions, batch, hidden_size)
         out, hidden = self.rnn(x, hidden)
-        return hidden, out.view(-1, num_classes)
+        return hidden, out.view(-1, num_classes) # make sure the output is in the right shape
 
     def init_hidden(self):
         # Initialize hidden and cell states

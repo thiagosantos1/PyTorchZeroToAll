@@ -22,9 +22,9 @@ class RNNClassifier(nn.Module):
         self.hidden_size = hidden_size
         self.n_layers = n_layers
 
-        self.embedding = nn.Embedding(input_size, hidden_size)
-        self.gru = nn.GRU(hidden_size, hidden_size, n_layers)
-        self.fc = nn.Linear(hidden_size, output_size)
+        self.embedding = nn.Embedding(input_size, hidden_size) 
+        self.gru = nn.GRU(hidden_size, hidden_size, n_layers) # type of RNN/Layer
+        self.fc = nn.Linear(hidden_size, output_size) # On top of that, we gonna a Fully connected layer(last one) for better classification
 
     def forward(self, input):
         # Note: we run this all at once (over the whole input sequence)

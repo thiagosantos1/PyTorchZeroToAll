@@ -29,7 +29,7 @@ class Model(nn.Module):
 
     def __init__(self):
         super(Model, self).__init__()
-        self.embedding = nn.Embedding(input_size, embedding_size)
+        self.embedding = nn.Embedding(input_size, embedding_size) # Vocab_size and output_size
         self.rnn = nn.RNN(input_size=embedding_size,
                           hidden_size=5, batch_first=True)
         self.fc = nn.Linear(hidden_size, num_classes)
